@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     ZOO SOROCABA - PÁGINA INICIAL (index.html)
+     Projeto de HTML, CSS e Flexbox - Engenharia de Computação, UniFacens.
+     O CSS fica no arquivo externo style.css e é ligado pela tag <link>.
+     ============================================================ -->
+<html lang="pt-BR">
+<head>
+    <!-- Codificação de caracteres (acentos e emojis) -->
+    <meta charset="UTF-8">
+    <!-- Faz o site se adaptar à largura de celulares e tablets -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título que aparece na aba do navegador -->
+    <title>Zoo Sorocaba - Parque Ecológico Quinzinho de Barros</title>
+    <!-- CSS externo: liga o HTML à folha de estilos -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Fonte Nunito do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ========================================================
+         CABEÇALHO / MENU DE NAVEGAÇÃO
+         Os links usam #id para rolar até cada seção da página.
+         ======================================================== -->
+    <header class="navbar">
+        <!-- Logo do site -->
+        <div class="logo">
+            <h1>🐾 Zoo Sorocaba</h1>
+        </div>
+        <!-- Menu principal -->
+        <nav class="nav-links">
+            <a href="#home">Início</a>
+            <a href="#sobre">Sobre o Zoo</a>
+            <a href="#animais">Nossos Animais</a>
+            <a href="#horarios">Horários</a>
+            <a href="#ingressos">Ingressos</a>
+            <a href="#faq">Dúvidas</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <!-- ========================================================
+         HERO: faixa de boas-vindas com chamada para ação
+         ======================================================== -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h2>Zoológico de Sorocaba</h2>
+            <p>O Parque Zoológico Municipal Quinzinho de Barros é um dos mais completos da América Latina. Venha se conectar com a natureza e aprender sobre preservação!</p>
+            <!-- Botão que leva até a seção de ingressos -->
+            <a href="#ingressos" class="cta-button">Compre seu Ingresso</a>
+        </div>
+    </section>
+
+    <!-- ========================================================
+         SOBRE O ZOO: texto de apresentação e estatísticas
+         ======================================================== -->
+    <section id="sobre" class="about-section">
+        <!-- Texto institucional -->
+        <div class="about-text">
+            <h2>Preservação e Cuidado</h2>
+            <p>Um orgulho para Sorocaba! Nosso zoológico é um santuário para centenas de espécies. Trabalhamos diariamente na educação ambiental, pesquisa e conservação da biodiversidade.</p>
+        </div>
+        <!-- Três caixas de números (organizadas com flexbox) -->
+        <div class="about-stats">
+            <div class="stat-box">
+                <h3>+20</h3>
+                <p>Espécies em Destaque</p>
+            </div>
+            <div class="stat-box">
+                <h3>130ha</h3>
+                <p>Área Preservada</p>
+            </div>
+            <div class="stat-box">
+                <h3>1968</h3>
+                <p>Ano de Fundação</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+         NOSSOS ANIMAIS: 20 cards (requisito Box Model + Flexbox)
+         Cada card é um <article class="animal-card card-N">.
+         A classe animal-card define content, padding, border e margin;
+         a classe card-N define a cor da borda de cada animal.
+         ======================================================== -->
+    <section id="animais" class="animals-section">
+        <!-- Título da seção -->
+        <div class="section-title">
+            <h2>Conheça Nossos Animais</h2>
+            <p>Explore a diversidade da vida selvagem. Clique em "Saiba Mais" para visitar a página exclusiva de cada animal!</p>
+        </div>
+
+        <!-- Contêiner flex que organiza os 20 cards -->
+        <div class="animals-grid">
+            <!-- Animal 1: Leão -->
+            <article class="animal-card card-1">
+                <!-- Emoji do animal -->
+                <div class="card-icon">🦁</div>
+                <!-- Nome, nome científico e descrição -->
+                <div class="card-info">
+                    <h3 class="animal-name">Leão</h3>
+                    <p class="sci-name"><i>Panthera leo</i></p>
+                    <p class="animal-desc">O rei da selva, conhecido por sua juba majestosa e rugido poderoso.</p>
+                </div>
+                <!-- Link para a página individual -->
+                <div class="card-action">
+                    <a href="leao.html" class="btn-saiba-mais">Saiba Mais</a>
+                </div>
+            </article>
+            <!-- Animal 2: Tigre -->
+            <article class="animal-card card-2">
+                <!-- Emoji do animal -->
+                <div class="card-icon">🐯</div>
+                <!-- Nome, nome científico e descrição -->
+                <div class="card-info">
+                    <h3 class="animal-name">Tigre</h3>
+                    <p class="sci-name"><i>Panthera tigris</i></p>
+                    <p class="animal-desc">O maior felino do mundo, com listras únicas como impressões digitais.</p>
+                </div>
+                <!-- Link para a página individual -->
+                <div class="card-action">
+                    <a href="tigre.html" class="btn-saiba-mais">Saiba Mais</a>
+                </div>
+            </article>
+            <!-- Animal 3: Elefante -->
+            <article class="animal-card card-3">
+                <!-- Emoji do animal -->
+                <div class="card-icon">🐘</div>
+                <!-- Nome, nome científico e descrição -->
+                <div class="card-info">
+                    <h3 class="animal-name">Elefante</h3>
+                    <p class="sci-name"><i>Loxodonta africana</i></p>
+                    <p class="animal-desc">Gigante gentil com uma memória incrível e inteligência avançada.</p>
+                </div>
+                <!-- Link para a página individual -->
+                <div class="card-action">
+                    <a href="elefante.html" class="btn-saiba-mais">Saiba Mais</a>
+                </div>
+            </article>
+            <!-- Animal 4: Girafa -->
+            <article class="animal-card card-4">
+                <!-- Emoji do animal -->
+                <div class="card-icon">🦒</div>
+                <!-- Nome, nome científico e descrição -->
+                <div class="card-info">
+                    <h3 class="animal-name">Girafa</h3>
+                    <p class="sci-name"><i>Giraffa camelopardalis</i></p>
+                    <p class="animal-desc">O animal terrestre mais alto, alcançando folhas nas copas das árvores.</p>
+                </div>
+                <!-- Link para a página individual -->
+                <div class="card-action">
+                    <a href="girafa.html" class="btn-saiba-mais">Saiba Mais</a>
+                </div>
+            </article>
+            <!-- Animal 5: Zebra -->
+            <article class="animal-card card-5">
+                <!-- Emoji do animal -->
+                <div class="card-icon">🦓</div>
+                <!-- Nome, nome científico e descrição -->
+                <div class="card-info">
+                    <h3 class="animal-name">Zebra</h3>
+                    <p class="sci-name"><i>Equus quagga</i></p>
+                    <p class="animal-desc">Famosa por sua pelagem listrada em preto e branco.</p>
+                </div>
+                <!-- Link para a página individual -->
+                <div class="card-action">
+                    <a href="zebra.html" class="btn-saiba-mais">Saiba Mais</a>
+                </div>
+            </article>
+            <!-- Animal 6: Gorila -->
+            <article class="animal-card card-6">
+                <!-- Emoji do animal -->
+                <div class="card-icon">🦍</div>
+                <!-- Nome, nome científico e descrição -->
+                <div class="card-info">
+                    <h3 class="animal-name">Gorila</h3>
+                    <p class="sci-name"><i>Gorilla gorilla</i></p>
+                    <p class="animal-desc">Primatas fortes e sociais que vivem em grupos familiares complexos.</p>
+                </div>
+                <!-- Link para a página individual -->
+                <div class="card-action">
+                    <a href="gorila.html" class="btn-saiba-mais">Saiba Mais</a>
+                </div>
+            </article>
+            <!-- Animal 7: Urso Polar -->
+            <article class="animal-card card-7">
+                <!-- Emoji do animal -->
+                <div class="card-icon">🐻‍❄️</div>
+                <!-- Nome, nome científico e descrição -->
+                <div class="card-info">
+                    <h3 class="animal-name">Urso Polar</h3>
+                    <p class="sci-name"><i>Ursus maritimus</i></p>
+                    <p class="animal-desc">O maior carnívoro terrestre, adaptado ao frio extremo.</p>
+                </div>
+                <!-- Link para a página individual -->
+                <div class="card-action">
+                    <a href="urso.html" class="btn-saiba-mais">Saiba Mais</a>
+                </div>
+            </article>
+            <!-- Animal 8: Pinguim -->
+            <article class="animal-card card-8">
+                <!-- Emoji do animal -->
+                <div class="card-icon">🐧</div>
+                <!-- Nome, nome científico e descrição -->
+                <div class="card-info">
+                    <h3 class="animal-name">Pinguim</h3>
+                    <p class="sci-name"><i>Spheniscidae</i></p>
+                    <p class="animal-desc">Aves marinhas que não voam, mas são nadadores extraordinários.</p>
+                </div>
+                <!-- Link para a página individual -->
+                <div class="card-action">
+                    <a href="pinguim.html" class="btn-saiba-mais">Saiba Mais</a>
+                </div>
+            </article>
+            <!-- Animal 9: Hipopótamo -->
+            <article class="animal-card card-9">
+                <!-- Emoji do animal -->
+                <div class="card-icon">🦛</div>
+                <!-- Nome, nome científico e descrição -->
+                <div class="card-info">
+                    <h3 class="animal-name">Hipopótamo</h3>
+                    <p class="sci-name"><i>Hippopotamus amphibius</i></p>
+                    <p class="animal-desc">Passam a maior parte do dia na água para se refrescar.</p>
+                </div>
+                <!-- Link para a página individual -->
+                <div class="card-action">
+                    <a href="hipopotamo.html" class="btn-saiba-mais">Saiba Mais</a>
+                </div>
+            </article>
+            <!-- Animal 10: Rinoceronte -->
+            <article class="animal-card card-10">
+                <!-- Emoji do animal -->
+                <div class="card-icon">🦏</div>
+                <!-- Nome, nome científico e descrição -->
+                <div class="card-info">
+                    <h3 class="animal-name">Rinoceronte</h3>
+                    <p class="sci-name"><i>Rhinocerotidae</i></p>
+                    <p class="animal-desc">Possuem chifres característicos e uma pele espessa como armadura.</p>
+                </div>
+                <!-- Link para a página individual -->
+                <div class="card-action">
+                    <a href="rinoceronte.html" class="btn-saiba-mais">Saiba Mais</a>
+                </div>
+            </article>
+            <!-- Animal 11: Canguru -->
+            <article class="animal-card card-11">
+                <!-- Emoji do animal -->
+                <div class="card-icon">🦘</div>
+                <!-- Nome, nome científico e descrição -->
+                <div class="card-info">
+                    <h3 class="animal-name">Canguru</h3>
+                    <p class="sci-name"><i>Macropodidae</i></p>
+                    <p class="animal-desc">Marsupiais saltadores nativos do continente australiano.</p>
+                </div>
+                <!-- Link para a página individual -->
+                <div class="card-action">
+                    <a href="canguru.html" class="btn-saiba-mais">Saiba Mais</a>
+                </div>
+            </article>
+            <!-- Animal 12: Panda Gigante -->
+            <article class="animal-card card-12">
+                <!-- Emoji do animal -->
+                <div class="card-icon">🐼</div>
+                <!-- Nome, nome científico e descrição -->
+                <div class="card-info">
+                    <h3 class="animal-name">Panda Gigante</h3>
+                    <p class="sci-name"><i>Ailuropoda melanoleuca</i></p>
+                    <p class="animal-desc">Amantes de bambu e um símbolo global de conservação.</p>
+                </div>
+                <!-- Link para a página individual -->
+                <div class="card-action">
+                    <a href="panda.html" class="btn-saiba-mais">Saiba Mais</a>
+                </div>
+            </article>
+            <!-- Animal 13: Lobo -->
+            <article class="animal-card card-13">
+                <!-- Emoji do animal -->
+                <div class="card-icon">🐺</div>
+                <!-- Nome, nome científico e descrição -->
+                <div class="card-info">
+                    <h3 class="animal-name">Lobo</h3>
+                    <p class="sci-name"><i>Canis lupus</i></p>
+                    <p class="animal-desc">Predadores sociais que caçam e vivem em matilhas organizadas.</p>
+                </div>
+                <!-- Link para a página individual -->
+                <div class="card-action">
+                    <a href="lobo.html" class="btn-saiba-mais">Saiba Mais</a>
+                </div>
+            </article>
+            <!-- Animal 14: Raposa -->
+            <article class="animal-card card-14">
+                <!-- Emoji do animal -->
+                <div class="card-icon">🦊</div>
+                <!-- Nome, nome científico e descrição -->
+                <div class="card-info">
+                    <h3 class="animal-name">Raposa</h3>
+                    <p class="sci-name"><i>Vulpes vulpes</i></p>
+                    <p class="animal-desc">Animais ágeis, astutos e adaptáveis a diversos ambientes.</p>
+                </div>
+                <!-- Link para a página individual -->
+                <div class="card-action">
+                    <a href="raposa.html" class="btn-saiba-mais">Saiba Mais</a>
+                </div>
+            </article>
+            <!-- Animal 15: Jacaré -->
+            <article class="animal-card card-15">
+                <!-- Emoji do animal -->
+                <div class="card-icon">🐊</div>
+                <!-- Nome, nome científico e descrição -->
+                <div class="card-info">
+                    <h3 class="animal-name">Jacaré</h3>
+                    <p class="sci-name"><i>Alligatoridae</i></p>
+                    <p class="animal-desc">Répteis semiaquáticos com mandíbulas poderosas.</p>
+                </div>
+                <!-- Link para a página individual -->
+                <div class="card-action">
+                    <a href="jacare.html" class="btn-saiba-mais">Saiba Mais</a>
+                </div>
+            </article>
+            <!-- Animal 16: Arara Azul -->
+            <article class="animal-card card-16">
+                <!-- Emoji do animal -->
+                <div class="card-icon">🦜</div>
+                <!-- Nome, nome científico e descrição -->
+                <div class="card-info">
+                    <h3 class="animal-name">Arara Azul</h3>
+                    <p class="sci-name"><i>Anodorhynchus hyacinthinus</i></p>
+                    <p class="animal-desc">Aves vibrantes, inteligentes e nativas das florestas tropicais.</p>
+                </div>
+                <!-- Link para a página individual -->
+                <div class="card-action">
+                    <a href="arara.html" class="btn-saiba-mais">Saiba Mais</a>
+                </div>
+            </article>
+            <!-- Animal 17: Tartaruga -->
+            <article class="animal-card card-17">
+                <!-- Emoji do animal -->
+                <div class="card-icon">🐢</div>
+                <!-- Nome, nome científico e descrição -->
+                <div class="card-info">
+                    <h3 class="animal-name">Tartaruga</h3>
+                    <p class="sci-name"><i>Testudines</i></p>
+                    <p class="animal-desc">Répteis antigos conhecidos por sua longevidade e casco protetor.</p>
+                </div>
+                <!-- Link para a página individual -->
+                <div class="card-action">
+                    <a href="tartaruga.html" class="btn-saiba-mais">Saiba Mais</a>
+                </div>
+            </article>
+            <!-- Animal 18: Leopardo -->
+            <article class="animal-card card-18">
+                <!-- Emoji do animal -->
+                <div class="card-icon">🐆</div>
+                <!-- Nome, nome científico e descrição -->
+                <div class="card-info">
+                    <h3 class="animal-name">Leopardo</h3>
+                    <p class="sci-name"><i>Panthera pardus</i></p>
+                    <p class="animal-desc">Felinos ágeis e excelentes escaladores de árvores.</p>
+                </div>
+                <!-- Link para a página individual -->
+                <div class="card-action">
+                    <a href="leopardo.html" class="btn-saiba-mais">Saiba Mais</a>
+                </div>
+            </article>
+            <!-- Animal 19: Camelo -->
+            <article class="animal-card card-19">
+                <!-- Emoji do animal -->
+                <div class="card-icon">🐪</div>
+                <!-- Nome, nome científico e descrição -->
+                <div class="card-info">
+                    <h3 class="animal-name">Camelo</h3>
+                    <p class="sci-name"><i>Camelus dromedarius</i></p>
+                    <p class="animal-desc">Adaptados ao deserto, armazenam gordura em suas corcovas.</p>
+                </div>
+                <!-- Link para a página individual -->
+                <div class="card-action">
+                    <a href="camelo.html" class="btn-saiba-mais">Saiba Mais</a>
+                </div>
+            </article>
+            <!-- Animal 20: Suricato -->
+            <article class="animal-card card-20">
+                <!-- Emoji do animal -->
+                <div class="card-icon">🦦</div>
+                <!-- Nome, nome científico e descrição -->
+                <div class="card-info">
+                    <h3 class="animal-name">Suricato</h3>
+                    <p class="sci-name"><i>Suricata suricatta</i></p>
+                    <p class="animal-desc">Pequenos mamíferos conhecidos por sua postura ereta de sentinela.</p>
+                </div>
+                <!-- Link para a página individual -->
+                <div class="card-action">
+                    <a href="suricato.html" class="btn-saiba-mais">Saiba Mais</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ========================================================
+         HORÁRIOS DE FUNCIONAMENTO
+         Os horários abaixo são ilustrativos (projeto acadêmico).
+         ======================================================== -->
+    <section id="horarios" class="hours-section">
+        <h2>Horários de Funcionamento</h2>
+        <div class="hours-list">
+            <!-- Dias de semana -->
+            <div class="hour-item">
+                <h3>Terça a Sexta</h3>
+                <p>9h às 17h</p>
+            </div>
+            <!-- Fim de semana -->
+            <div class="hour-item">
+                <h3>Sábados e Domingos</h3>
+                <p>9h às 18h</p>
+            </div>
+            <!-- Dia de descanso -->
+            <div class="hour-item">
+                <h3>Segunda-feira</h3>
+                <p>Fechado para manutenção</p>
+            </div>
+        </div>
+        <!-- Aviso: dados fictícios -->
+        <p class="hours-note">Horários ilustrativos para fins didáticos. Consulte o site oficial do zoológico antes de visitar.</p>
+    </section>
+
+    <!-- ========================================================
+         INGRESSOS E PASSAPORTES
+         Cada plano é um <div class="ticket-tier">; o plano
+         "Inteira" recebe a classe extra "destaque".
+         ======================================================== -->
+    <section id="ingressos" class="tickets-section">
+        <h2>Ingressos e Passaportes</h2>
+        <div class="tickets-container">
+            <!-- Plano 1: meia entrada -->
+            <div class="ticket-tier">
+                <h3>Infantil / Meia</h3>
+                <p class="price">R$ 4,00</p>
+                <ul>
+                    <li>Acesso ao Parque</li>
+                    <li>Mapa Virtual</li>
+                </ul>
+                <a href="#contato" class="btn-ticket">Comprar</a>
+            </div>
+            <!-- Plano 2: inteira (em destaque) -->
+            <div class="ticket-tier destaque">
+                <h3>Inteira</h3>
+                <p class="price">R$ 8,00</p>
+                <ul>
+                    <li>Acesso ao Parque</li>
+                    <li>Mapa Virtual</li>
+                    <li>Estacionamento</li>
+                </ul>
+                <a href="#contato" class="btn-ticket">Comprar</a>
+            </div>
+            <!-- Plano 3: gratuito -->
+            <div class="ticket-tier">
+                <h3>Gratuito</h3>
+                <p class="price">R$ 0,00</p>
+                <ul>
+                    <li>Crianças até 5 anos</li>
+                    <li>Idosos acima de 60 anos</li>
+                    <li>Pessoas com deficiência</li>
+                </ul>
+                <a href="#contato" class="btn-ticket">Agendar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+         DEPOIMENTOS
+         Textos de exemplo, criados para ilustrar o layout.
+         ======================================================== -->
+    <section id="depoimentos" class="reviews-section">
+        <h2>O que os visitantes dizem</h2>
+        <div class="reviews-container">
+            <!-- Depoimento 1 -->
+            <blockquote class="review-card">
+                <p>As crianças adoraram os animais e aprenderam muito sobre conservação.</p>
+                <span class="author">— Visitante A (exemplo)</span>
+            </blockquote>
+            <!-- Depoimento 2 -->
+            <blockquote class="review-card">
+                <p>Passeio tranquilo e bem organizado. Voltaremos com a família toda.</p>
+                <span class="author">— Visitante B (exemplo)</span>
+            </blockquote>
+            <!-- Depoimento 3 -->
+            <blockquote class="review-card">
+                <p>Ótima opção de lazer e educação ambiental para turmas escolares.</p>
+                <span class="author">— Visitante C (exemplo)</span>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- ========================================================
+         PERGUNTAS FREQUENTES (FAQ)
+         <details> e <summary> criam blocos que abrem e fecham sem JavaScript.
+         ======================================================== -->
+    <section id="faq" class="faq-section">
+        <h2>Perguntas Frequentes</h2>
+        <div class="faq-list">
+            <!-- Pergunta 1 -->
+            <details>
+                <summary>Posso levar alimentos para os animais?</summary>
+                <p>Não. A alimentação dos animais é controlada pela equipe de biólogos e veterinários para garantir a saúde de todos.</p>
+            </details>
+            <!-- Pergunta 2 -->
+            <details>
+                <summary>O parque é acessível?</summary>
+                <p>Este projeto prevê entrada gratuita para pessoas com deficiência. Confirme as condições de acessibilidade no site oficial.</p>
+            </details>
+            <!-- Pergunta 3 -->
+            <details>
+                <summary>Quanto tempo dura a visita?</summary>
+                <p>Em média, de 2 a 3 horas para conhecer os principais recintos com calma.</p>
+            </details>
+            <!-- Pergunta 4 -->
+            <details>
+                <summary>Posso visitar com um grupo escolar?</summary>
+                <p>Sim. Use o formulário de contato abaixo para solicitar o agendamento da turma.</p>
+            </details>
+        </div>
+    </section>
+
+    <!-- ========================================================
+         CONTATO: informações e formulário
+         O formulário é apenas visual (sem envio para servidor).
+         ======================================================== -->
+    <section id="contato" class="contact-section">
+        <!-- Coluna de informações -->
+        <div class="contact-info">
+            <h2>Fale Conosco</h2>
+            <p>Dúvidas, sugestões ou agendamento de grupos? Preencha o formulário e entraremos em contato.</p>
+            <p><strong>Endereço:</strong> R. Teodoro Kaisel, 883 - Vila Hortência, Sorocaba - SP</p>
+            <p><strong>Telefone:</strong> (15) 3227-5454</p>
+        </div>
+        <!-- Coluna do formulário -->
+        <form class="contact-form" action="#" method="get">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="voce@exemplo.com" required>
+            </div>
+            <div class="form-group">
+                <label for="mensagem">Mensagem</label>
+                <textarea id="mensagem" name="mensagem" rows="4" placeholder="Escreva sua mensagem"></textarea>
+            </div>
+            <button type="submit" class="btn-enviar">Enviar mensagem</button>
+        </form>
+    </section>
+
+    <!-- ========================================================
+         RODAPÉ: três colunas e direitos autorais
+         ======================================================== -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <!-- Coluna 1: identificação -->
+            <div class="footer-col">
+                <h4>Zoo Sorocaba</h4>
+                <p>Parque Zoológico Municipal Quinzinho de Barros.</p>
+            </div>
+            <!-- Coluna 2: links úteis -->
+            <div class="footer-col">
+                <h4>Links Úteis</h4>
+                <a href="#home">Início</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#animais">Animais</a>
+                <a href="#ingressos">Ingressos</a>
+            </div>
+            <!-- Coluna 3: contato -->
+            <div class="footer-col"> 
+                <h4>Contato</h4>
+                <p>Endereço: R. Teodoro Kaisel, 883 - Vila Hortência, Sorocaba - SP</p>
+                <p>Telefone: (15) 3227-5454</p>
+            </div>
+        </div>
+        <!-- Direitos autorais -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 Desenvolvido para fins educacionais - Engenharia de Computação (UniFacens).</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,854 @@
+/* =========================================================
+   ZOO SOROCABA - FOLHA DE ESTILOS PRINCIPAL (style.css)
+   Projeto: Engenharia de Computação - UniFacens
+   Autor: Vinicius Valentim Pereira
+
+   ORGANIZAÇÃO DO ARQUIVO
+   1. Reset e variáveis
+   2. Navbar
+   3. Hero
+   4. Sobre
+   5. Cards dos animais (BOX MODEL nos 20 elementos)
+   6. Horários
+   7. Ingressos
+   8. Depoimentos
+   9. FAQ
+   10. Contato (formulário)
+   11. Rodapé
+   12. Páginas individuais dos animais
+   13. Responsividade (media queries)
+
+   REQUISITO FLEXBOX: 20 recursos numerados, marcados como
+   [FLEX n/20] ao longo do arquivo. Há ainda dois extras
+   (align-self e order), marcados como [FLEX extra].
+
+   LISTA RÁPIDA DOS 20 RECURSOS FLEXBOX
+    1 display: flex                    11 align-items: center
+    2 display: inline-flex             12 align-items: stretch
+    3 flex-direction: row              13 align-content: space-around
+    4 flex-direction: column           14 gap
+    5 flex-wrap: wrap                  15 row-gap
+    6 flex-flow: row wrap              16 column-gap
+    7 justify-content: space-between   17 flex-basis
+    8 justify-content: center          18 flex-grow
+    9 justify-content: space-around    19 flex-shrink
+   10 justify-content: space-evenly    20 flex (shorthand)
+========================================================= */
+
+
+/* =========================================================
+   1. RESET E VARIÁVEIS
+========================================================= */
+
+/* Zera margens e paddings padrão do navegador.
+   box-sizing: border-box faz width/height incluírem padding e borda. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variáveis CSS (custom properties): cores usadas no site inteiro.
+   Mudar uma cor aqui muda o site todo. */
+:root {
+    --primary-color: #1b5e20;   /* verde escuro: navbar, títulos, rodapé */
+    --secondary-color: #4caf50; /* verde claro: botões e bordas */
+    --accent-color: #f57c00;    /* laranja: destaques e chamadas */
+    --accent-dark: #e65100;     /* laranja escuro: hover dos botões */
+    --light-bg: #f4f8f4;        /* fundo geral das seções claras */
+    --text-main: #333333;       /* cor padrão do texto */
+    --text-light: #ffffff;      /* texto sobre fundo escuro */
+}
+
+/* Rolagem suave ao clicar nos links âncora do menu */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Estilo base do corpo da página */
+body {
+    font-family: 'Nunito', sans-serif; /* fonte importada do Google Fonts */
+    background-color: var(--light-bg);
+    color: var(--text-main);
+    line-height: 1.6;                  /* espaçamento entre linhas */
+}
+
+
+/* =========================================================
+   2. NAVBAR (menu superior)
+========================================================= */
+.navbar {
+    display: flex;                    /* [FLEX 1/20] ativa o flexbox no contêiner */
+    flex-direction: row;              /* [FLEX 3/20] itens lado a lado (logo e menu) */
+    justify-content: space-between;   /* [FLEX 7/20] logo na esquerda, menu na direita */
+    align-items: center;              /* [FLEX 11/20] centraliza na vertical */
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 15px 50px;
+    position: sticky;                 /* fica fixa no topo ao rolar */
+    top: 0;
+    z-index: 1000;                    /* garante que fique acima do conteúdo */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Links do menu */
+.nav-links {
+    display: inline-flex;             /* [FLEX 2/20] flex em linha (largura do conteúdo) */
+    gap: 25px;                        /* [FLEX 14/20] espaço entre os links */
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s;           /* suaviza a troca de cor no hover */
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+
+/* =========================================================
+   3. HERO (faixa principal)
+========================================================= */
+.hero-section {
+    display: flex;
+    flex-direction: column;           /* [FLEX 4/20] empilha título, texto e botão */
+    justify-content: center;          /* [FLEX 8/20] centraliza na vertical */
+    align-items: center;              /* centraliza na horizontal */
+    height: 70vh;                     /* 70% da altura da janela */
+    /* Fundo só com gradiente: não depende de imagem externa */
+    background: linear-gradient(135deg, #1b5e20 0%, #388e3c 55%, #81c784 100%);
+    color: var(--text-light);
+    text-align: center;
+    padding: 20px;
+}
+
+.hero-content {
+    max-width: 800px;                 /* limita a largura do texto */
+}
+
+.hero-content h2 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+/* Botão de chamada para ação */
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 15px 30px;
+    margin-top: 20px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);           /* aumenta levemente */
+    background-color: var(--accent-dark);
+}
+
+
+/* =========================================================
+   4. SOBRE O ZOO
+========================================================= */
+.about-section {
+    display: flex;
+    flex-wrap: wrap;                  /* [FLEX 5/20] permite quebrar linha em telas menores */
+    align-content: space-around;      /* [FLEX 13/20] distribui as linhas no espaço vertical */
+    padding: 80px 10%;
+    background-color: #fff;
+}
+
+.about-text {
+    flex-basis: 50%;                  /* [FLEX 17/20] largura inicial: metade do contêiner */
+    padding-right: 40px;
+}
+
+.about-text h2 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* Caixas de estatísticas (+20, 130ha, 1968) */
+.about-stats {
+    display: flex;
+    flex-grow: 1;                     /* [FLEX 18/20] ocupa o espaço que sobrar */
+    justify-content: space-around;    /* [FLEX 9/20] espaço igual ao redor de cada item */
+    align-items: center;
+}
+
+.stat-box {
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.stat-box h3 {
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   5. NOSSOS ANIMAIS - 20 CARDS
+========================================================= */
+.animals-section {
+    padding: 80px 5%;
+    background-color: var(--light-bg);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 2.8rem;
+    color: var(--primary-color);
+}
+
+/* Contêiner flex que organiza os 20 cards de forma responsiva */
+.animals-grid {
+    display: flex;
+    flex-flow: row wrap;              /* [FLEX 6/20] direção em linha + quebra de linha */
+    justify-content: center;          /* centraliza os cards em cada linha */
+    row-gap: 40px;                    /* [FLEX 15/20] espaço entre as linhas */
+    column-gap: 30px;                 /* [FLEX 16/20] espaço entre as colunas */
+}
+
+/* ---------------------------------------------------------
+   BOX MODEL NOS 20 ELEMENTOS (.animal-card)
+   Todas as propriedades de Content, Padding, Border e Margin
+   recebem valor. Como a regra é de classe, vale para os 20.
+   Aqui usamos content-box para o width/height serem só o
+   CONTEÚDO (o padding e a borda ficam por fora):
+   largura total = 220 + 20 + 20 + 3 + 3 = 266px (+ margens).
+--------------------------------------------------------- */
+.animal-card {
+    box-sizing: content-box;          /* width/height medem só o conteúdo */
+
+    /* ---- CONTENT (conteúdo) ---- */
+    width: 220px;                     /* largura do conteúdo */
+    height: 380px;                    /* altura do conteúdo */
+    min-width: 200px;                 /* largura mínima */
+    max-width: 260px;                 /* largura máxima */
+    min-height: 360px;                /* altura mínima */
+    max-height: 420px;                /* altura máxima */
+    overflow: hidden;                 /* corta o que passar da altura */
+
+    /* ---- PADDING (espaço interno) ---- */
+    padding-top: 25px;
+    padding-right: 20px;
+    padding-bottom: 25px;
+    padding-left: 20px;
+
+    /* ---- BORDER (borda) ---- */
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-style: solid;
+    border-color: var(--secondary-color); /* cada .card-N troca esta cor */
+    border-radius: 15px;
+
+    /* ---- MARGIN (espaço externo) ---- */
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+
+    /* Aparência */
+    background-color: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+
+    /* Flexbox interno: organiza ícone, texto e botão em coluna */
+    display: flex;
+    flex-direction: column;           /* empilha os blocos do card */
+    justify-content: space-between;   /* separa topo e botão */
+    align-items: center;              /* centraliza horizontalmente */
+    flex-shrink: 0;                   /* [FLEX 19/20] o card não encolhe abaixo do tamanho */
+    text-align: center;
+}
+
+.animal-card:hover {
+    transform: translateY(-10px);     /* sobe ao passar o mouse */
+    border-color: var(--primary-color);
+    box-shadow: 0 15px 30px rgba(27, 94, 32, 0.2);
+}
+
+/* Emoji do animal */
+.card-icon {
+    font-size: 5rem;
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+/* Nome do animal */
+.animal-name {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+/* Nome científico (itálico vem da tag <i> no HTML) */
+.sci-name {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+/* Descrição curta */
+.animal-desc {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Botão "Saiba Mais" */
+.btn-saiba-mais {
+    display: inline-block;
+    align-self: stretch;              /* [FLEX extra] estica o botão na largura do card */
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    color: #fff;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.btn-saiba-mais:hover {
+    background-color: var(--primary-color);
+}
+
+/* Cor de borda individual de cada um dos 20 cards.
+   As cores combinam com o animal (ex.: dourado para o leão). */
+.card-1  { border-color: #ffd54f; }   /* leão */
+.card-2  { border-color: #ff8a65; }   /* tigre */
+.card-3  { border-color: #90a4ae; }   /* elefante */
+.card-4  { border-color: #dce775; }   /* girafa */
+.card-5  { border-color: #000000; }   /* zebra */
+.card-6  { border-color: #4e342e; }   /* gorila */
+.card-7  { border-color: #b3e5fc; }   /* urso polar */
+.card-8  { border-color: #4fc3f7; }   /* pinguim */
+.card-9  { border-color: #8d6e63; }   /* hipopótamo */
+.card-10 { border-color: #9e9e9e; }   /* rinoceronte */
+.card-11 { border-color: #a1887f; }   /* canguru */
+.card-12 { border-color: #424242; }   /* panda */
+.card-13 { border-color: #bdbdbd; }   /* lobo */
+.card-14 { border-color: #ffb74d; }   /* raposa */
+.card-15 { border-color: #81c784; }   /* jacaré */
+.card-16 { border-color: #64b5f6; }   /* arara azul */
+.card-17 { border-color: #aed581; }   /* tartaruga */
+.card-18 { border-color: #ffcc80; }   /* leopardo */
+.card-19 { border-color: #d7ccc8; }   /* camelo */
+.card-20 { border-color: #ffd54f; }   /* suricato */
+
+
+/* =========================================================
+   6. HORÁRIOS DE FUNCIONAMENTO
+========================================================= */
+.hours-section {
+    padding: 80px 5%;
+    background-color: #fff;
+    text-align: center;
+}
+
+.hours-section h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+}
+
+.hours-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;    /* [FLEX 10/20] espaço igual entre e nas pontas */
+    gap: 20px;
+}
+
+.hour-item {
+    flex: 1 1 220px;                  /* cresce, encolhe e parte de 220px (shorthand) */
+    padding: 25px 20px;
+    border: 2px dashed var(--secondary-color);
+    border-radius: 12px;
+    background-color: var(--light-bg);
+}
+
+.hour-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.hours-note {
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+
+/* =========================================================
+   7. INGRESSOS
+========================================================= */
+.tickets-section {
+    padding: 80px 5%;
+    background-color: var(--light-bg);
+    text-align: center;
+}
+
+.tickets-section h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 50px;
+}
+
+.tickets-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;             /* [FLEX 12/20] os 3 planos ficam com a mesma altura */
+    gap: 30px;
+}
+
+/* Cada plano é um flex em coluna para o botão ficar sempre embaixo */
+.ticket-tier {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 40px 20px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.ticket-tier h3 {
+    margin-bottom: 15px;
+}
+
+.ticket-tier .price {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+}
+
+.ticket-tier ul {
+    flex: 1 1 auto;                   /* a lista ocupa o espaço livre e empurra o botão */
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.ticket-tier li {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+/* Botão do plano (é um link <a> estilizado como botão) */
+.btn-ticket {
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.btn-ticket:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Plano em destaque (Inteira) */
+.ticket-tier.destaque {
+    transform: scale(1.05);
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 10px 25px rgba(245, 124, 0, 0.2);
+}
+
+.ticket-tier.destaque .btn-ticket {
+    background-color: var(--accent-color);
+}
+
+
+/* =========================================================
+   8. DEPOIMENTOS
+========================================================= */
+.reviews-section {
+    padding: 80px 5%;
+    background-color: #fff;
+    text-align: center;
+}
+
+.reviews-section h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+}
+
+.reviews-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+.review-card {
+    flex: 1 1 280px;                  /* [FLEX 20/20] shorthand flex: grow shrink basis */
+    max-width: 360px;
+    padding: 30px 25px;
+    background-color: var(--light-bg);
+    border-left: 6px solid var(--accent-color);
+    border-radius: 10px;
+    text-align: left;
+}
+
+.review-card p {
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.review-card .author {
+    font-weight: 700;
+    font-style: normal;
+    color: var(--primary-color);
+}
+
+
+/* =========================================================
+   9. PERGUNTAS FREQUENTES (FAQ)
+========================================================= */
+.faq-section {
+    padding: 80px 5%;
+    background-color: var(--light-bg);
+}
+
+.faq-section h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Lista de perguntas centralizada com largura máxima */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto;                   /* centraliza o bloco */
+}
+
+.faq-list details {
+    padding: 18px 22px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.faq-list summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.faq-list details p {
+    margin-top: 12px;
+    color: #555;
+}
+
+
+/* =========================================================
+   10. CONTATO (formulário)
+========================================================= */
+.contact-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 80px 5%;
+    background-color: #fff;
+}
+
+.contact-info,
+.contact-form {
+    flex: 1 1 300px;                  /* duas colunas que viram uma em telas pequenas */
+}
+
+.contact-info h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+/* Destaque ao digitar em um campo */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+
+.btn-enviar {
+    padding: 14px;
+    background-color: var(--accent-color);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-enviar:hover {
+    background-color: var(--accent-dark);
+}
+
+
+/* =========================================================
+   11. RODAPÉ
+========================================================= */
+.site-footer {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 60px 5% 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-col {
+    flex: 1 1 250px;                  /* cada coluna cresce e tem base de 250px */
+}
+
+.footer-col h4 {
+    font-size: 1.5rem;
+    color: #a5d6a7;
+    margin-bottom: 20px;
+}
+
+.footer-col a {
+    display: block;
+    color: #ccc;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.footer-col a:hover {
+    color: #fff;
+}
+
+.footer-bottom {
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ddd;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+
+/* =========================================================
+   12. PÁGINAS INDIVIDUAIS DOS ANIMAIS
+========================================================= */
+.animal-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 220px);  /* ocupa a tela descontando navbar e rodapé */
+    padding: 60px 20px;
+}
+
+.animal-detail-card {
+    width: 100%;
+    max-width: 800px;
+    padding: 50px;
+    background: #fff;
+    border-top: 10px solid var(--primary-color);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.animal-detail-icon {
+    font-size: 8rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.animal-detail-card h2 {
+    font-size: 3rem;
+    color: var(--primary-color);
+}
+
+.animal-detail-card .sci-name {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.animal-detail-card p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    text-align: justify;
+}
+
+/* Três caixas: habitat, dieta e expectativa de vida */
+.facts-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.fact-box {
+    flex: 1 1 200px;
+    padding: 18px 15px;
+    background-color: var(--light-bg);
+    border-radius: 12px;
+}
+
+.fact-box h3 {
+    font-size: 1rem;
+    color: var(--primary-color);
+    margin-bottom: 6px;
+}
+
+.fact-box p {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+/* Caixa de curiosidade */
+.curiosity {
+    margin-bottom: 30px;
+    padding: 20px 25px;
+    background-color: #fff3e0;
+    border-left: 6px solid var(--accent-color);
+    border-radius: 10px;
+    text-align: left;
+}
+
+.curiosity p {
+    margin-bottom: 0;
+}
+
+/* Botões de navegação (voltar / anterior / próximo) */
+.animal-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-voltar {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--accent-color);
+    color: #fff;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn-voltar:hover {
+    background-color: var(--accent-dark);
+}
+
+
+/* =========================================================
+   13. RESPONSIVIDADE (celulares e tablets)
+========================================================= */
+@media (max-width: 768px) {
+
+    /* Navbar vira coluna: logo em cima, menu embaixo */
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;              /* links quebram linha se faltar espaço */
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .hero-content h2 {
+        font-size: 2.5rem;
+    }
+
+    /* Sobre: texto ocupa a linha toda */
+    .about-text {
+        flex-basis: 100%;
+        padding-right: 0;
+        margin-bottom: 40px;
+    }
+
+    /* Estatísticas aparecem antes do texto no celular */
+    .about-stats {
+        order: -1;                    /* [FLEX extra] muda a ordem visual */
+        flex-basis: 100%;
+        margin-bottom: 30px;
+    }
+
+    /* Cards em coluna única e centralizados */
+    .animals-grid {
+        flex-direction: column;
+        flex-wrap: nowrap;            /* sem quebra: uma coluna só */
+        align-items: center;
+    }
+
+    .ticket-tier.destaque {
+        transform: scale(1);          /* remove o zoom para não estourar a tela */
+    }
+
+    .animal-detail-card {
+        padding: 30px 20px;
+    }
+
+    .animal-nav {
+        justify-content: center;
+    }
+}
